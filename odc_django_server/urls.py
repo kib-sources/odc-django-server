@@ -24,11 +24,15 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
 
+    # -----------------------------------------------------------------------------------------------------------------
     # api
     path('api/ping', api.ping, name='api_ping'),
 
+    # -----------------------------------------------------------------------------------------------------------------
     # views
     path('', views.index, name='index'),
+
+    path('example', views.example, name='example'),
 
 
 

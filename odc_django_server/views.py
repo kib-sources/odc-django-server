@@ -27,3 +27,7 @@ def index(request):
   template = loader.get_template('index.html')
   return HttpResponse(template.render())
 
+
+def example(request):
+  template = loader.get_template('example.html')
+  return HttpResponse(template.render())
