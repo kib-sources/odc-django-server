@@ -19,9 +19,6 @@ __status__ = "Develop"
 
 from django.http import HttpResponse
 from django.template import loader
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth import authenticate, login
-from django.shortcuts import render, redirect
 
 import os
 
@@ -34,21 +31,3 @@ def index(request):
 def example(request):
   template = loader.get_template('example.html')
   return HttpResponse(template.render())
-
-@login_required(login_url='login')
-def example(request):
-    template = loader.get_template('example.html')
-    return HttpResponse(template.render())
-
-def login_view(request):
-    if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return redirect('example')  
-        else:
-            return render(request, 'login.html', {'error': 'Invalid credentials'})
-
-    return render(request, 'login.html')
