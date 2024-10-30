@@ -16,10 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.contrib.auth import views as auth_views
 
 from . import api
 from . import views
-
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -34,6 +34,6 @@ urlpatterns = [
 
     path('example', views.example, name='example'),
 
-
+    path('login/', auth_views.LoginView.as_view(), name='login'),
 
 ]
