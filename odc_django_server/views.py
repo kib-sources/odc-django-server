@@ -19,6 +19,7 @@ __status__ = "Develop"
 
 from django.http import HttpResponse
 from django.template import loader
+from django.contrib.auth.decorators import login_required
 
 import os
 
@@ -31,3 +32,8 @@ def index(request):
 def example(request):
   template = loader.get_template('example.html')
   return HttpResponse(template.render())
+
+@login_required(login_url='login')
+def example(request):
+    template = loader.get_template('example.html')
+    return HttpResponse(template.render())
